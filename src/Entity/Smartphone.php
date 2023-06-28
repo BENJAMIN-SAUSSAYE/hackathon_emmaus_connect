@@ -14,7 +14,7 @@ class Smartphone
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 20, nullable: true)]
     private ?string $imeiNumber = null;
 
     #[ORM\Column]

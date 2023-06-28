@@ -103,96 +103,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "batterie" => "4500 mAh"
         ),
         array(
-            "nom" => "iPhone 12",
-            "numero" => "12",
-            "constructeur" => "Apple",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.1 pouces",
-            "reseau_cellulaire" => "4G",
-            "ram" => "4 Go",
-            "capacite_stockage" => "64 Go",
-            "systeme_exploitation" => "iOS",
-            "couleur" => "Noir",
-            "camera_principale" => "12 MP",
-            "camera_frontale" => "12 MP",
-            "batterie" => "2815 mAh"
-        ),
-        array(
-            "nom" => "Samsung Galaxy S21",
-            "numero" => "S21",
-            "constructeur" => "Samsung",
-            "annee_fabrication" => 2021,
-            "taille_ecran" => "6.2 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Gris",
-            "camera_principale" => "64 MP",
-            "camera_frontale" => "10 MP",
-            "batterie" => "4000 mAh"
-        ),
-        array(
-            "nom" => "Google Pixel 5",
-            "numero" => "5",
-            "constructeur" => "Google",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Blanc",
-            "camera_principale" => "12.2 MP",
-            "camera_frontale" => "8 MP",
-            "batterie" => "4080 mAh"
-        ),
-        array(
-            "nom" => "Samsung Galaxy S20",
-            "numero" => "S20",
-            "constructeur" => "Samsung",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.2 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "12 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Bleu",
-            "camera_principale" => "64 MP",
-            "camera_frontale" => "10 MP",
-            "batterie" => "4000 mAh"
-        ),
-        array(
-            "nom" => "iPhone 13 Pro",
-            "numero" => "13 Pro",
-            "constructeur" => "Apple",
-            "annee_fabrication" => 2021,
-            "taille_ecran" => "6.1 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "6 Go",
-            "capacite_stockage" => "256 Go",
-            "systeme_exploitation" => "iOS",
-            "couleur" => "Or",
-            "camera_principale" => "12 MP",
-            "camera_frontale" => "12 MP",
-            "batterie" => "3095 mAh"
-        ),
-        array(
-            "nom" => "OnePlus 9",
-            "numero" => "9",
-            "constructeur" => "OnePlus",
-            "annee_fabrication" => 2021,
-            "taille_ecran" => "6.55 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "48 MP",
-            "camera_frontale" => "16 MP",
-            "batterie" => "4500 mAh"
-        ),
-        array(
             "nom" => "Samsung Galaxy Note 20",
             "numero" => "Note 20",
             "constructeur" => "Samsung",
@@ -239,7 +149,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "OnePlus 8 Pro",
-            "numero" => "8 Pro",
+            "numero" => "8 Pro 256 Go",
             "constructeur" => "OnePlus",
             "annee_fabrication" => 2020,
             "taille_ecran" => "6.78 pouces",
@@ -284,7 +194,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "LG Velvet",
-            "numero" => "Velvet",
+            "numero" => "Velvet - Blanc",
             "constructeur" => "LG",
             "annee_fabrication" => 2020,
             "taille_ecran" => "6.8 pouces",
@@ -296,21 +206,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "camera_principale" => "48 MP",
             "camera_frontale" => "16 MP",
             "batterie" => "4300 mAh"
-        ),
-        array(
-            "nom" => "Motorola Moto G Power",
-            "numero" => "G Power",
-            "constructeur" => "Motorola",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.4 pouces",
-            "reseau_cellulaire" => "4G",
-            "ram" => "4 Go",
-            "capacite_stockage" => "64 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Bleu",
-            "camera_principale" => "16 MP",
-            "camera_frontale" => "16 MP",
-            "batterie" => "5000 mAh"
         ),
         array(
             "nom" => "Nokia 8.3 5G",
@@ -326,21 +221,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "camera_principale" => "64 MP",
             "camera_frontale" => "24 MP",
             "batterie" => "4500 mAh"
-        ),
-        array(
-            "nom" => "Huawei P40 Pro",
-            "numero" => "P40 Pro",
-            "constructeur" => "Huawei",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.58 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "256 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "50 MP",
-            "camera_frontale" => "32 MP",
-            "batterie" => "4200 mAh"
         ),
         array(
             "nom" => "Oppo Find X3 Pro",
@@ -373,21 +253,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "batterie" => "5000 mAh"
         ),
         array(
-            "nom" => "Sony Xperia 5 II",
-            "numero" => "5 II",
-            "constructeur" => "Sony",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.1 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "12 MP",
-            "camera_frontale" => "8 MP",
-            "batterie" => "4000 mAh"
-        ),
-        array(
             "nom" => "Motorola Edge",
             "numero" => "Edge",
             "constructeur" => "Motorola",
@@ -418,21 +283,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "batterie" => "4400 mAh"
         ),
         array(
-            "nom" => "Google Pixel 5",
-            "numero" => "Pixel 5",
-            "constructeur" => "Google",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.0 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "12.2 MP",
-            "camera_frontale" => "8 MP",
-            "batterie" => "4080 mAh"
-        ),
-        array(
             "nom" => "Xiaomi Mi 10T Pro",
             "numero" => "Mi 10T Pro",
             "constructeur" => "Xiaomi",
@@ -448,23 +298,8 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "batterie" => "5000 mAh"
         ),
         array(
-            "nom" => "OnePlus Nord",
-            "numero" => "Nord",
-            "constructeur" => "OnePlus",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.44 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Bleu",
-            "camera_principale" => "48 MP",
-            "camera_frontale" => "32 MP",
-            "batterie" => "4115 mAh"
-        ),
-        array(
             "nom" => "Samsung Galaxy A71",
-            "numero" => "A71",
+            "numero" => "A71 - 2020",
             "constructeur" => "Samsung",
             "annee_fabrication" => 2020,
             "taille_ecran" => "6.7 pouces",
@@ -629,7 +464,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "Nokia 7.2",
-            "numero" => "7.2",
+            "numero" => "7.2 - Noir",
             "constructeur" => "Nokia",
             "annee_fabrication" => 2019,
             "taille_ecran" => "6.3 pouces",
@@ -641,21 +476,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "camera_principale" => "48 MP",
             "camera_frontale" => "20 MP",
             "batterie" => "3500 mAh"
-        ),
-        array(
-            "nom" => "Huawei P40 Pro",
-            "numero" => "P40 Pro",
-            "constructeur" => "Huawei",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.58 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "256 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "50 MP",
-            "camera_frontale" => "32 MP",
-            "batterie" => "4200 mAh"
         ),
         array(
             "nom" => "Samsung Galaxy M31",
@@ -674,7 +494,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "iPhone SE (2020)",
-            "numero" => "SE (2020)",
+            "numero" => "SE (2020) - Noir",
             "constructeur" => "Apple",
             "annee_fabrication" => 2020,
             "taille_ecran" => "4.7 pouces",
@@ -704,7 +524,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "OnePlus 8 Pro",
-            "numero" => "8 Pro",
+            "numero" => "8 Pro 128 Go",
             "constructeur" => "OnePlus",
             "annee_fabrication" => 2020,
             "taille_ecran" => "6.78 pouces",
@@ -719,7 +539,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "Samsung Galaxy A51",
-            "numero" => "A51",
+            "numero" => "A51 - Blanc",
             "constructeur" => "Samsung",
             "annee_fabrication" => 2019,
             "taille_ecran" => "6.5 pouces",
@@ -838,23 +658,8 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "batterie" => "3500 mAh"
         ),
         array(
-            "nom" => "Huawei Mate 40 Pro",
-            "numero" => "Mate 40 Pro",
-            "constructeur" => "Huawei",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "6.76 pouces",
-            "reseau_cellulaire" => "5G",
-            "ram" => "8 Go",
-            "capacite_stockage" => "256 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "50 MP",
-            "camera_frontale" => "13 MP",
-            "batterie" => "4400 mAh"
-        ),
-        array(
             "nom" => "Samsung Galaxy A71",
-            "numero" => "A71",
+            "numero" => "A71 - 2019",
             "constructeur" => "Samsung",
             "annee_fabrication" => 2019,
             "taille_ecran" => "6.7 pouces",
@@ -869,7 +674,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "iPhone XR",
-            "numero" => "XR",
+            "numero" => "XR - Blanc",
             "constructeur" => "Apple",
             "annee_fabrication" => 2018,
             "taille_ecran" => "6.1 pouces",
@@ -1019,7 +824,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "LG Velvet",
-            "numero" => "Velvet",
+            "numero" => "Velvet - Gris",
             "constructeur" => "LG",
             "annee_fabrication" => 2020,
             "taille_ecran" => "6.8 pouces",
@@ -1049,7 +854,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "Nokia 7.2",
-            "numero" => "7.2",
+            "numero" => "7.2 - Gris",
             "constructeur" => "Nokia",
             "annee_fabrication" => 2019,
             "taille_ecran" => "6.3 pouces",
@@ -1079,7 +884,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "Samsung Galaxy A51",
-            "numero" => "A51",
+            "numero" => "A51 - Noir",
             "constructeur" => "Samsung",
             "annee_fabrication" => 2019,
             "taille_ecran" => "6.5 pouces",
@@ -1094,7 +899,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "iPhone SE (2020)",
-            "numero" => "SE (2020)",
+            "numero" => "SE (2020) - Rouge",
             "constructeur" => "Apple",
             "annee_fabrication" => 2020,
             "taille_ecran" => "4.7 pouces",
@@ -1106,21 +911,6 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             "camera_principale" => "12 MP",
             "camera_frontale" => "7 MP",
             "batterie" => "1821 mAh"
-        ),
-        array(
-            "nom" => "Google Pixel 4a",
-            "numero" => "Pixel 4a",
-            "constructeur" => "Google",
-            "annee_fabrication" => 2020,
-            "taille_ecran" => "5.81 pouces",
-            "reseau_cellulaire" => "4G",
-            "ram" => "6 Go",
-            "capacite_stockage" => "128 Go",
-            "systeme_exploitation" => "Android",
-            "couleur" => "Noir",
-            "camera_principale" => "12.2 MP",
-            "camera_frontale" => "8 MP",
-            "batterie" => "3140 mAh"
         ),
         array(
             "nom" => "Xiaomi Mi 10",
@@ -1244,7 +1034,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         ),
         array(
             "nom" => "iPhone XR",
-            "numero" => "XR",
+            "numero" => "XR - Bleu",
             "constructeur" => "Apple",
             "annee_fabrication" => 2018,
             "taille_ecran" => "6.1 pouces",
@@ -1294,17 +1084,16 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::MODELS as $key => $itemModel) {
             $model = new Model();
             $model->setName($itemModel['nom']);
+            $model->setCodeNumber($itemModel['numero']);
             $model->setNetworkSpeed($itemModel['reseau_cellulaire']);
             $model->setRamNumber((int)trim(str_replace('Go', '', $itemModel['ram'])));
             $model->setStockageNumber((int)trim(str_replace('Go', '', $itemModel['capacite_stockage'])));
             $model->setScreenSize((int)trim(str_replace('pouces', '', $itemModel['taille_ecran'])));
             $model->setYearManufacture($itemModel['annee_fabrication']);
             $model->setBasePrice($faker->numberBetween(50, 100));
-            $model->setBrand($this->getReference('brand_' . strtoupper($itemModel['constructeur'])));
-            //$model->set($itemModel->);
-
+            $model->setBrand($this->getReference('Brand_' . strtoupper($itemModel['constructeur'])));
             $manager->persist($model);
-            $this->addReference('model_' . $key, $model);
+            $this->addReference('Model_' . trim($itemModel['numero']), $model);
         }
 
         $manager->flush();
