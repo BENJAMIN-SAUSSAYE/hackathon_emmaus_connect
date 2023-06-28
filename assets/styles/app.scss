@@ -1,0 +1,25 @@
+//start coding by removing this file and adding yours
+@import "_theme.scss";
+
+body {
+  background-color: $dark-light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-title;
+  color: $primary-light;
+  letter-spacing: 2px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  padding-block-start: $navbar-height;
+}
