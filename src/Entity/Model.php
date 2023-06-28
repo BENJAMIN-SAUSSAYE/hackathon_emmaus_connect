@@ -35,6 +35,10 @@ class Model
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $basePrice = null;
 
+    #[ORM\ManyToOne(inversedBy: 'models')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Brand $brand = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +124,18 @@ class Model
     public function setBasePrice(string $basePrice): static
     {
         $this->basePrice = $basePrice;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): static
+    {
+        $this->brand = $brand;
 
         return $this;
     }
