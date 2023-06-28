@@ -7,7 +7,7 @@
 
 {% block stylesheets %}
 	{{ parent() }}
-	{{ encore_entry_link_tags('login') }}
+	{# {{ encore_entry_link_tags('login') }} #}
 {% endblock %}
 
 {% block body %}
@@ -20,7 +20,6 @@
 
 			<div class="px-sm-5 px-3 border border-secondary m-auto d-flex flex-column align-items-center pt-5 bg-card-gradient-color bg-card ornement position-relative">
 				<h2 class="text-center text-uppercase letter-spacing mt-5">Espace de connexion</h2>
-				{% include "components/svg/_frame_surlignage.svg.twig" %}
 
 				<form action="#" method="post" class="col-12 m-auto d-flex flex-column gap-1 mt-5">
 					<div class="mb-3">
