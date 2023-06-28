@@ -41,6 +41,17 @@ class Smartphone
     #[ORM\Column(nullable: true)]
     private ?float $rateCo2 = null;
 
+    #[ORM\ManyToOne]
+    private ?DeviceState $deviceState = null;
+
+    #[ORM\ManyToOne(inversedBy: 'smartphones')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $operator = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Model $Model = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +161,42 @@ class Smartphone
     public function setRateCo2(?float $rateCo2): static
     {
         $this->rateCo2 = $rateCo2;
+
+        return $this;
+    }
+
+    public function getDeviceState(): ?DeviceState
+    {
+        return $this->deviceState;
+    }
+
+    public function setDeviceState(?DeviceState $deviceState): static
+    {
+        $this->deviceState = $deviceState;
+
+        return $this;
+    }
+
+    public function getOperator(): ?User
+    {
+        return $this->operator;
+    }
+
+    public function setOperator(?User $operator): static
+    {
+        $this->operator = $operator;
+
+        return $this;
+    }
+
+    public function getModel(): ?Model
+    {
+        return $this->Model;
+    }
+
+    public function setModel(?Model $Model): static
+    {
+        $this->Model = $Model;
 
         return $this;
     }
