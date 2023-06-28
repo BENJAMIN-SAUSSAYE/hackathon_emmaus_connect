@@ -26,6 +26,7 @@ class UserFixtures extends Fixture
         $user->setPassword($hashedPassword);
         $user->setFirstname('Cedric');
         $user->setLastname('Durand');
+        $user->setCenterName('Orléans');
         $manager->persist($user);
         $this->addReference('User_OPERATOR', $user);
 
@@ -37,6 +38,7 @@ class UserFixtures extends Fixture
         $admin->setPassword($hashedPassword);
         $admin->setFirstname('Mike');
         $admin->setLastname('Xiong');
+        $admin->setCenterName('Orléans');
         $manager->persist($admin);
         $this->addReference('User_ADMIN', $admin);
 

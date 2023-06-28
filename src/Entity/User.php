@@ -39,6 +39,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 150)]
     private ?string $lastname = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(max: 150)]
+    #[ORM\Column(length: 150)]
+    private ?string $centerName = null;
+
     #[ORM\Column(type: Types::ARRAY)]
     private array $roles = [];
 
@@ -167,6 +172,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $smartphone->setOperator(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of centerName
+     */
+    public function getCenterName(): ?string
+    {
+        return $this->centerName;
+    }
+
+    /**
+     * Set the value of centerName
+     *
+     * @return  self
+     */
+    public function setCenterName(string $centerName): static
+    {
+        $this->centerName = $centerName;
 
         return $this;
     }
