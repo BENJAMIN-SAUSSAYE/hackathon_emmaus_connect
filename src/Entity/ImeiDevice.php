@@ -13,8 +13,8 @@ class ImeiDevice
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $imeiNumber = null;
+    #[ORM\Column(length: 20)]
+    private ?string $imeiNumber = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -25,12 +25,12 @@ class ImeiDevice
         return $this->id;
     }
 
-    public function getImeiNumber(): ?int
+    public function getImeiNumber(): ?string
     {
         return $this->imeiNumber;
     }
 
-    public function setImeiNumber(int $imeiNumber): static
+    public function setImeiNumber(string $imeiNumber): static
     {
         $this->imeiNumber = $imeiNumber;
 

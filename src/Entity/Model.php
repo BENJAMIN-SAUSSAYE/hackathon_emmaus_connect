@@ -39,6 +39,9 @@ class Model
     #[ORM\JoinColumn(nullable: false)]
     private ?Brand $brand = null;
 
+    #[ORM\Column(length: 25)]
+    private ?string $codeNumber = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +139,18 @@ class Model
     public function setBrand(?Brand $brand): static
     {
         $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getCodeNumber(): ?string
+    {
+        return $this->codeNumber;
+    }
+
+    public function setCodeNumber(string $codeNumber): static
+    {
+        $this->codeNumber = $codeNumber;
 
         return $this;
     }
