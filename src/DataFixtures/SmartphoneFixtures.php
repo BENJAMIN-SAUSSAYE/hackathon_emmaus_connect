@@ -16,6 +16,9 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
 {
     public const SMARTPHONE_COUNT = 50;
 
+    public function __construct()
+    {
+    }
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
@@ -50,7 +53,9 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
             $smartphone->setRateCo2($faker->numberBetween(10, 30));
-            $smartphone->setCalculatePrice($faker->numberBetween(1, 100));
+            //CALCULATE PRICE FINAL
+            $calculatePriceService = new CalculatePriceService($smartphone);
+            $smartphone->setCalculatePrice($calculatePriceService->getFinalPrice());
             $manager->persist($smartphone);
         }
 
@@ -77,7 +82,10 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
             $smartphone->setRateCo2($faker->numberBetween(10, 30));
-            $smartphone->setCalculatePrice($faker->numberBetween(1, 100));
+
+            //CALCULATE PRICE FINAL
+            $calculatePriceService = new CalculatePriceService($smartphone);
+            $smartphone->setCalculatePrice($calculatePriceService->getFinalPrice());
             $manager->persist($smartphone);
         }
 
