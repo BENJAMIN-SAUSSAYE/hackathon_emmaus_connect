@@ -52,7 +52,7 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setScreenSize($faker->randomElement([5, 6, 3, 7, 8]));
             $smartphone->setYearManufacture($faker->numberBetween(2010, 2023));
             $smartphone->setComment($faker->sentence($nbWords = 25));
-            $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
+            $smartphone->setPonderation($faker->randomElement([-50, -30, -20, 0, 10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
             $smartphone->setRateCo2($this->calculateCarbonService->getCarbonne($smartphone));
             //CALCULATE PRICE FINAL
@@ -80,7 +80,7 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setYearManufacture($itemDevice->getYearManufacture());
 
             $smartphone->setComment($faker->sentence($nbWords = 25));
-            $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
+            $smartphone->setPonderation($faker->randomElement([-50, -30, -20, 0, 10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
             $smartphone->setRateCo2($this->calculateCarbonService->getCarbonne($smartphone));
             //CALCULATE PRICE FINAL
