@@ -75,10 +75,12 @@ class SmartphoneController extends AbstractController
 	public function showResult(Smartphone $smartphone, ModelRepository $modelRepository, CalculatePriceService $calculatePriceService): Response
 	{
 		$categoryLabel = $calculatePriceService->getPriceCategory($smartphone);
+		$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
 
 		return $this->render('smartphone/result.html.twig', [
 			'categoryLabel' => $categoryLabel,
 			'smartphone' => $smartphone,
+			'congratulationsPhrase' => $congratulationsPhrase,
 		]);
 	}
 
