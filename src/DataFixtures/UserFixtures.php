@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -19,17 +18,17 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create('fr_FR');
         // Création d'un utilisateur
         $user = new User();
         $user->setEmail('user@monsite.com');
         $user->setRoles(['ROLE_USER']);
         $hashedPassword = $this->passwordHasher->hashPassword($user, 'userpassword');
         $user->setPassword($hashedPassword);
-        $user->setFirstname('Simple');
-        $user->setLastname('User');
-
+        $user->setFirstname('Cedric');
+        $user->setLastname('Durand');
+        $user->setCenterName('Orléans');
         $manager->persist($user);
+        $this->addReference('User_OPERATOR', $user);
 
         // Création d'un administrateur
         $admin = new User();
@@ -39,7 +38,10 @@ class UserFixtures extends Fixture
         $admin->setPassword($hashedPassword);
         $admin->setFirstname('Mike');
         $admin->setLastname('Xiong');
+        $admin->setCenterName('Orléans');
         $manager->persist($admin);
+        $this->addReference('User_ADMIN', $admin);
+
         $manager->flush();
     }
 }

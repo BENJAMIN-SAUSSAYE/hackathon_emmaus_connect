@@ -22,6 +22,8 @@ Encore
    */
   .addEntry("app", "./assets/app.js")
   .addStyleEntry("caracteristique", "./assets/styles/caracteristique.scss")
+  .addStyleEntry('login', './assets/styles/login.scss')
+
 
   // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
   .splitEntryChunks()
