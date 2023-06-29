@@ -50,6 +50,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'operator', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $level = null;
+
     public function __construct()
     {
         $this->smartphones = new ArrayCollection();
@@ -192,6 +195,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCenterName(string $centerName): static
     {
         $this->centerName = $centerName;
+
+        return $this;
+    }
+
+    public function getLevel(): ?int
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?int $level): static
+    {
+        $this->level = $level;
 
         return $this;
     }
