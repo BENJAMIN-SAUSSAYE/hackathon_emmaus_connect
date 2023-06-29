@@ -92,12 +92,15 @@ class IdentifyType extends AbstractType
 
 	public function addModelField(FormInterface $form, ?Brand $brand): void
 	{
+		$models = null === $brand ? [] : $brand->getModels();
+
 		//dd($brand);
 		$model = $this->factory
 			->createNamedBuilder('model', EntityType::class, $brand, [
 				'class' => Model::class,
 				'placeholder' => null === $brand ? 'Choisir une marque en premier' : sprintf('Quel model pour %s?', $brand->getName()),
 				'choice_label' => 'name',
+				'choices' => $models,
 				'disabled' => null === $brand,
 				// silence real-time "invalid" message when switching "Brand"
 				'invalid_message' => false,
