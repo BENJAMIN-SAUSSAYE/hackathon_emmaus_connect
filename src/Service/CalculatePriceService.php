@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Entity\Category;
 use App\Entity\Smartphone;
-use App\Repository\SmartphoneRepository;
 
 class CalculatePriceService
 {
@@ -66,10 +65,9 @@ class CalculatePriceService
 		$ponderation = $this->smartphone->getPonderation();
 
 		$rate = (($valRam + $valStock) / self::COEF_REGUL);
-		$this->finalPrice = floor($basePrice + ($basePrice * $rate) / 100);
+		$intermediatePrice = floor($basePrice + ($basePrice * $rate) / 100);
+		$this->finalPrice = $intermediatePrice + ($ponderation * $intermediatePrice / 100);
 	}
-
-
 	private function getValRam(int $ramNumber): int
 	{
 		$val = '';
