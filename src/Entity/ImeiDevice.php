@@ -20,6 +20,21 @@ class ImeiDevice
     #[ORM\JoinColumn(nullable: false)]
     private ?Model $model = null;
 
+    #[ORM\Column]
+    private ?int $screenSize = null;
+
+    #[ORM\Column]
+    private ?int $yearManufacture = null;
+
+    #[ORM\Column(length: 25)]
+    private ?string $networkSpeed = null;
+
+    #[ORM\Column]
+    private ?int $stockageNumber = null;
+
+    #[ORM\Column]
+    private ?int $ramNumber = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +60,66 @@ class ImeiDevice
     public function setModel(?Model $model): static
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function getScreenSize(): ?int
+    {
+        return $this->screenSize;
+    }
+
+    public function setScreenSize(int $screenSize): static
+    {
+        $this->screenSize = $screenSize;
+
+        return $this;
+    }
+
+    public function getYearManufacture(): ?int
+    {
+        return $this->yearManufacture;
+    }
+
+    public function setYearManufacture(int $yearManufacture): static
+    {
+        $this->yearManufacture = $yearManufacture;
+
+        return $this;
+    }
+
+    public function getNetworkSpeed(): ?string
+    {
+        return $this->networkSpeed;
+    }
+
+    public function setNetworkSpeed(string $networkSpeed): static
+    {
+        $this->networkSpeed = $networkSpeed;
+
+        return $this;
+    }
+
+    public function getStockageNumber(): ?int
+    {
+        return $this->stockageNumber;
+    }
+
+    public function setStockageNumber(int $stockageNumber): static
+    {
+        $this->stockageNumber = $stockageNumber;
+
+        return $this;
+    }
+
+    public function getRamNumber(): ?int
+    {
+        return $this->ramNumber;
+    }
+
+    public function setRamNumber(int $ramNumber): static
+    {
+        $this->ramNumber = $ramNumber;
 
         return $this;
     }

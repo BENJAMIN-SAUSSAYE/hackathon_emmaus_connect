@@ -32,6 +32,9 @@ class Smartphone
     #[ORM\Column(nullable: true)]
     private ?int $yearManufacture = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $ponderation = null;
+
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $basePrice = null;
 
@@ -41,9 +44,6 @@ class Smartphone
     #[ORM\Column(nullable: true)]
     private ?float $rateCo2 = null;
 
-    #[ORM\ManyToOne]
-    private ?DeviceState $deviceState = null;
-
     #[ORM\ManyToOne(inversedBy: 'smartphones')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $operator = null;
@@ -52,6 +52,19 @@ class Smartphone
     #[ORM\JoinColumn(nullable: false)]
     private ?Model $Model = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $comment = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $estimateAt = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
+    private ?string $calculatePrice = null;
+
+    public function __construc()
+    {
+        $this->setEstimateAt(new \DateTimeImmutable());
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -165,18 +178,6 @@ class Smartphone
         return $this;
     }
 
-    public function getDeviceState(): ?DeviceState
-    {
-        return $this->deviceState;
-    }
-
-    public function setDeviceState(?DeviceState $deviceState): static
-    {
-        $this->deviceState = $deviceState;
-
-        return $this;
-    }
-
     public function getOperator(): ?User
     {
         return $this->operator;
@@ -197,6 +198,62 @@ class Smartphone
     public function setModel(?Model $Model): static
     {
         $this->Model = $Model;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of ponderation
+     */
+    public function getPonderation()
+    {
+        return $this->ponderation;
+    }
+
+    /**
+     * Set the value of ponderation
+     *
+     * @return  self
+     */
+    public function setPonderation($ponderation)
+    {
+        $this->ponderation = $ponderation;
+
+        return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): static
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getEstimateAt(): ?\DateTimeImmutable
+    {
+        return $this->estimateAt;
+    }
+
+    public function setEstimateAt(\DateTimeImmutable $estimateAt): static
+    {
+        $this->estimateAt = $estimateAt;
+
+        return $this;
+    }
+
+    public function getCalculatePrice(): ?string
+    {
+        return $this->calculatePrice;
+    }
+
+    public function setCalculatePrice(string $calculatePrice): static
+    {
+        $this->calculatePrice = $calculatePrice;
 
         return $this;
     }
