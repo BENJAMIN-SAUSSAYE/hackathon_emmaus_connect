@@ -7,14 +7,6 @@ use App\Repository\SmartphoneRepository;
 
 class CalculatePriceService
 {
-	public const PARAM_CARETORGIES = [
-		['valTotalMin' => 0, 'valTotalMax' => 89, 'category' => '1-HC'],
-		['valTotalMin' => 90, 'valTotalMax' => 164, 'category' => '2-C'],
-		['valTotalMin' => 165, 'valTotalMax' => 254, 'category' => '3-B'],
-		['valTotalMin' => 255, 'valTotalMax' => 374, 'category' => '4-A'],
-		['valTotalMin' => 375, 'valTotalMax' => 1000000, 'category' => '5-PREMIUM'],
-	];
-
 	public const PARAM_RAM = [
 		['value' => 1, 'rank' => 30],
 		['value' => 2, 'rank' => 40],

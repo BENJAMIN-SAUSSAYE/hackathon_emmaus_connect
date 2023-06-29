@@ -1085,12 +1085,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             $model = new Model();
             $model->setName($itemModel['nom']);
             $model->setCodeNumber($itemModel['numero']);
-            $model->setNetworkSpeed($itemModel['reseau_cellulaire']);
-            $model->setRamNumber((int)trim(str_replace('Go', '', $itemModel['ram'])));
-            $model->setStockageNumber((int)trim(str_replace('Go', '', $itemModel['capacite_stockage'])));
-            $model->setScreenSize((int)trim(str_replace('pouces', '', $itemModel['taille_ecran'])));
-            $model->setYearManufacture($itemModel['annee_fabrication']);
-            $model->setBasePrice($faker->numberBetween(50, 100));
+            $model->setBasePrice($faker->numberBetween(1, 80));
             $model->setBrand($this->getReference('Brand_' . strtoupper($itemModel['constructeur'])));
             $manager->persist($model);
             $this->addReference('Model_' . trim($itemModel['numero']), $model);

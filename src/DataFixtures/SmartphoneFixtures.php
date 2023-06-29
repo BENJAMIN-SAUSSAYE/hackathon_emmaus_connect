@@ -8,6 +8,7 @@ use App\DataFixtures\DeviceStateFixtures;
 use App\DataFixtures\ModelFixtures;
 use App\DataFixtures\UserFixtures;
 use App\Entity\Smartphone;
+use App\Service\CalculatePriceService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -25,21 +26,12 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < self::SMARTPHONE_COUNT; $i++) {
             $smartphone = new Smartphone();
             $randomModel = $faker->randomElement(ModelFixtures::MODELS);
-            $randomDeviceState = $faker->randomElement(DeviceStateFixtures::DEVICE_STATES);
-
-            //DEVICE STATE INFO
-            $deviceState = $this->getReference('DeviceState_' . $randomDeviceState['code']);
-            $smartphone->setDeviceState($deviceState);
 
             //MODEL INFO
             $model = $this->getReference('Model_' . $randomModel['numero']);
             $smartphone->setBasePrice($model->GetBasePrice());
             $smartphone->setModel($model);
-            $smartphone->setNetworkSpeed($model->getNetworkSpeed());
-            $smartphone->setRamNumber($model->getRamNumber());
-            $smartphone->setStockageNumber($model->getStockageNumber());
-            $smartphone->setScreenSize($model->getScreenSize());
-            $smartphone->setYearManufacture($model->getYearManufacture());
+
 
             //OPERATOR INFO
             $operator = $this->getReference('User_OPERATOR');
@@ -47,9 +39,16 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
 
             //OTHER INFO
             $smartphone->setImeiNumber('');
-            $smartphone->setDevicePicturePath('');
+            $smartphone->setNetworkSpeed($faker->randomElement(['3G', '4G', '5G']));
+            $smartphone->setRamNumber($faker->randomElement(CalculatePriceService::PARAM_RAM));
+            $smartphone->setStockageNumber($faker->randomElement(CalculatePriceService::PARAM_STOCKAGE));
+            $smartphone->setScreenSize($faker->randomElement([5, 6, 3, 7, 8]));
+            $smartphone->setYearManufacture($faker->numberBetween(2010, 2023));
+            $smartphone->setComment($faker->sentence($nbWords = 25));
+            $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
+            $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
             $smartphone->setRateCo2($faker->numberBetween(10, 30));
-
+            $smartphone->setCalculatePrice($faker->numberBetween(1, 100));
             $manager->persist($smartphone);
         }
 
