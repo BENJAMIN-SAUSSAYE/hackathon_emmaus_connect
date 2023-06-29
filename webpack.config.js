@@ -21,14 +21,9 @@ Encore
    * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
    */
   .addEntry("app", "./assets/app.js")
-<<<<<<< HEAD
   .addStyleEntry("login", "./assets/styles/login.scss")
   .addStyleEntry("identify", "./assets/styles/identify.scss")
-=======
   .addStyleEntry("caracteristique", "./assets/styles/caracteristique.scss")
-  .addStyleEntry('login', './assets/styles/login.scss')
-
->>>>>>> e76d303fbc086873e17925e4df2e2b6507c02f6a
 
   // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
   .splitEntryChunks()
