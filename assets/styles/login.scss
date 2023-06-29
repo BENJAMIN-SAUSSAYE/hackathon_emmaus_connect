@@ -1,0 +1,31 @@
+.container-fluid {
+    display: flex;
+    justify-content: center;
+}
+
+.custom-login {
+    width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// .smartphone {
+//     background-image: url('../images/smartphone.svg');
+//     background-repeat: none;
+//     background-position: center;
+    
+// }
+
+@media screen and (max-width:576px) {
+    .custom-login {
+        position: relative;
+        width: 90%;
+    }    
+
+    .custom-width {
+        width: 100%;
+        margin-top: 4rem;
+    }
+}

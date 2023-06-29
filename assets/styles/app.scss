@@ -2,7 +2,9 @@
 @import "_theme.scss";
 
 body {
-  background-color: $dark-light;
+  background-color: $primary;
+  padding-block-start: $navbar-height;
+
 }
 
 h1,
@@ -12,7 +14,7 @@ h4,
 h5,
 h6 {
   font-family: $font-title;
-  color: $primary-light;
+  color: $dark;
   letter-spacing: 2px;
 }
 
@@ -20,6 +22,10 @@ html {
   height: 100%;
 }
 
-body {
-  padding-block-start: $navbar-height;
+.custom-text-size {
+  font-size: 1.25rem;
+}
+
+.custom-letter-spacing {
+  letter-spacing: 3px;
 }
