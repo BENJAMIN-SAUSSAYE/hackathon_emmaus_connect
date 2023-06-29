@@ -87,4 +87,14 @@ class CalculatePriceService
 		}
 		return $val;
 	}
+
+	public function getAllRamValues(): array
+	{
+		return array_column(self::PARAM_RAM, 'value');
+	}
+
+	public function getAllStockageValues(): array
+	{
+		return array_column(self::PARAM_STOCKAGE, 'value');
+	}
 }
