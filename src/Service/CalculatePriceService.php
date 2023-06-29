@@ -41,32 +41,28 @@ class CalculatePriceService
 	private const COEF_REGUL = 5;
 	private float $finalPrice = 0.0;
 
-	public function __construct(private Smartphone $smartphone)
+	public function getCalulatePrice(Smartphone $smartphone): float
 	{
-		$this->calculate();
+		return $this->calculateFinalPrice($smartphone);
 	}
 
-	public function getFinalPrice(): float
+	public function getPriceCategory(Smartphone $smartphone): string
 	{
-		return $this->finalPrice;
-	}
-
-	public function getPriceCategory()
-	{
+		$FinalPrice = $this->calculateFinalPrice($smartphone);
 		$category = new Category();
-		return $category->getCode($this->getFinalPrice());
+		return $category->getCode($FinalPrice);
 	}
 
-	private function calculate()
+	private function calculateFinalPrice(Smartphone $smartphone): float
 	{
-		$valRam = $this->getValRam($this->smartphone->getRamNumber());
-		$valStock = $this->getValStock($this->smartphone->getStockageNumber());
-		$basePrice = $this->smartphone->getBasePrice();
-		$ponderation = $this->smartphone->getPonderation();
+		$valRam = $this->getValRam($smartphone->getRamNumber());
+		$valStock = $this->getValStock($smartphone->getStockageNumber());
+		$basePrice = $smartphone->getBasePrice();
+		$ponderation = $smartphone->getPonderation();
 
 		$rate = (($valRam + $valStock) / self::COEF_REGUL);
-		$intermediatePrice = floor($basePrice + ($basePrice * $rate) / 100);
-		$this->finalPrice = $intermediatePrice + ($ponderation * $intermediatePrice / 100);
+		$intermediatePrice = floor($basePrice + ($basePrice * $rate / 100));
+		return $intermediatePrice + ($ponderation * $intermediatePrice / 100);
 	}
 	private function getValRam(int $ramNumber): int
 	{
