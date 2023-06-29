@@ -5,43 +5,34 @@
 		</a>
 		{# <div class="line"></div> #}
 		{% if app.user %}
-		<button class="navbar-toggler border-primary border-2 py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			{% include 'components/svg/burger.svg' %}
-		</button>
-		<div class="collapse navbar-collapse justify-content-between align-items-start" id="navbarSupportedContent">
-			<ul class="navbar-nav d-flex justify-content-center align-items-start gap-4 gap-md-2 gap-lg-5 ms-lg-5 mt-4 ms-4 ms-md-0">
-				<li class="nav-item d-flex align-items-center">
-					<a class="nav-link text-dark fw-bolder gap-1 custom-text-size py-0" href="#">{% include 'components/svg/add-phone.svg' %}
-					<span class="">Ajouter un smartphone</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark fw-bolder custom-text-size py-0" href="#">Stock</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-dark fw-bolder custom-text-size custom-letter-spacing py-0" href="#">FAQ</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav ms-4 my-4">
-				<li class="nav-item">
-					<a class="nav-link text-dark fw-bolder gap-1 custom-text-size p-0" href="{{ path('app_logout') }}">
-						<p class="my-0 d-flex align-items-center gap-2">
-							Déconnexion {% include 'components/svg/off.svg' %}
-						</p>
-					</a>
-				</li>
-			</ul>
-			{% else %}
-			{# <ul class="navbar-nav mr-auto ms-4 ms-sm-0 mb-4 mb-sm-0">
-				<li class="nav-item d-flex align-items-end align-items-center px-2">
-					<a class="nav-link text-uppercase letter-spacing" href="{{ path('app_login') }}">
-						Connexion
-						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle d-none d-md-inline-block" viewbox="0 0 16 16">
-							<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-							<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-						</svg>
-					</a>
-				</li>
-			</ul> #}
+			<button class="navbar-toggler border-primary border-2 py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				{% include 'components/svg/burger.svg' %}
+			</button>
+			<div class="collapse navbar-collapse justify-content-between align-items-start" id="navbarSupportedContent">
+				<ul class="navbar-nav d-flex justify-content-center align-items-start gap-4 gap-md-2 gap-lg-5 ms-lg-5 mt-4 ms-4 ms-md-0">
+					<li class="nav-item d-flex align-items-center">
+						<a class="nav-link text-dark fw-bolder gap-1 custom-text-size py-0" href="{{ path('smartphone_identify')}}">{% include 'components/svg/add-phone.svg' %}
+							<span class="">Ajouter un smartphone</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark fw-bolder custom-text-size py-0" href="#">Stock</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark fw-bolder custom-text-size custom-letter-spacing py-0" href="#">FAQ</a>
+					</li>
+				</ul>
+				<ul class="navbar-nav ms-4 my-4">
+					<li class="nav-item">
+						<a class="nav-link text-dark fw-bolder gap-1 custom-text-size p-0" href="{{ path('app_logout') }}">
+							<p class="my-0 d-flex align-items-center gap-2">
+								Déconnexion
+								{% include 'components/svg/off.svg' %}
+							</p>
+						</a>
+					</li>
+				</ul>
+			{% endif %}
 		</div>
-	{% endif %}
+	</div>
 </nav>

@@ -2,14 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Smartphone;
 use App\Form\IdentifyType;
 use App\Entity\IdentifySearch;
 use App\Repository\ModelRepository;
+use App\Service\CalculatePriceService;
+
 use function PHPUnit\Framework\isEmpty;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -68,13 +71,14 @@ class SmartphoneController extends AbstractController
 	}
 
 	#[IsGranted('ROLE_USER')]
-	#[Route('/smartphone/resultat', name: 'smartphone_result')]
-	public function showResult(ModelRepository $modelRepository): Response
+	#[Route('/smartphone/resultat/{id}', name: 'smartphone_result')]
+	public function showResult(Smartphone $smartphone, ModelRepository $modelRepository, CalculatePriceService $calculatePriceService): Response
 	{
-		// $modelSmartphone = $modelRepository->findAll();
+		$categoryLabel = $calculatePriceService->getPriceCategory($smartphone);
 
 		return $this->render('smartphone/result.html.twig', [
-			// 'modelSmartphone' => $modelSmartphone,
+			'categoryLabel' => $categoryLabel,
+			'smartphone' => $smartphone,
 		]);
 	}
 
