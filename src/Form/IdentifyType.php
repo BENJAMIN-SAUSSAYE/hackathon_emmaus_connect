@@ -36,7 +36,7 @@ class IdentifyType extends AbstractType
 				'choice_label'  => 'name',
 				'placeholder' => 'Quelle marque ?',
 				'attr' => [
-					'class' => 'form-control border border-secondary',
+					'class' => 'form-select form-select-lg mb-3 bg-light border-primary',
 				],
 			])
 			->add(
@@ -47,7 +47,7 @@ class IdentifyType extends AbstractType
 					'required' => false,
 					'attr' => [
 						'placeholder' => 'N° de Imei...',
-						'class' => 'form-control border border-secondary',
+						'class' => 'form-control fs-4 bg-light',
 					],
 				]
 			);
@@ -92,18 +92,21 @@ class IdentifyType extends AbstractType
 
 	public function addModelField(FormInterface $form, ?Brand $brand): void
 	{
+		$models = null === $brand ? [] : $brand->getModels();
+
 		//dd($brand);
 		$model = $this->factory
 			->createNamedBuilder('model', EntityType::class, $brand, [
 				'class' => Model::class,
 				'placeholder' => null === $brand ? 'Choisir une marque en premier' : sprintf('Quel model pour %s?', $brand->getName()),
 				'choice_label' => 'name',
+				'choices' => $models,
 				'disabled' => null === $brand,
 				// silence real-time "invalid" message when switching "Brand"
 				'invalid_message' => false,
 				'auto_initialize' => false,
 				'attr' => [
-					'class' => 'form-control border border-secondary',
+					'class' => 'form-select form-select-lg mb-3 bg-light border-primary',
 				],
 			])
 			->addEventListener(FormEvents::POST_SUBMIT, [$this, 'storeDependencies']);
