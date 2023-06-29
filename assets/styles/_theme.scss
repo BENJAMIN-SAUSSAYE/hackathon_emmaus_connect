@@ -15,6 +15,7 @@ $custom-colors: (
   "tertiary": $tertiary,
   "primary-light": $primary-light,
   "secondary-light": $secondary-light,
+  "light": $light
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);

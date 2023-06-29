@@ -2,7 +2,7 @@
 @import "_theme.scss";
 
 body {
-  background-color: $dark-light;
+  background-color: $primary;
 }
 
 h1,
@@ -22,4 +22,8 @@ html {
 
 body {
   padding-block-start: $navbar-height;
+}
+
+.span-over:over {
+  color: $primary;
 }
