@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+use function PHPUnit\Framework\isEmpty;
+
 #[Route('/', name: 'smartphone_')]
 class SmartphoneController extends AbstractController
 {
@@ -49,7 +51,14 @@ class SmartphoneController extends AbstractController
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			return $this->redirectToRoute('app_caracteristic', ['id_brand' => $identifySearch->getBrand()->getId()], Response::HTTP_SEE_OTHER);
+			$params = [];
+			if (!empty($identifySearch->getModel())) {
+				$params += ['id_model' => $identifySearch->getModel()->getId()];
+			}
+			if (!empty($identifySearch->getImeiNumber()) && is_numeric($identifySearch->getImeiNumber())) {
+				$params = ['imei' => $identifySearch->getImeiNumber()];
+			}
+			return $this->redirectToRoute('app_caracteristic', $params, Response::HTTP_SEE_OTHER);
 		}
 		return $this->render('smartphone/identify.html.twig', [
 			'form' => $form,
