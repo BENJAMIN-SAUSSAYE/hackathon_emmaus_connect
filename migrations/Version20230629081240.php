@@ -22,7 +22,7 @@ final class Version20230629081240 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE smartphone DROP FOREIGN KEY FK_26B07E2E8BEC65E1');
         $this->addSql('DROP INDEX IDX_26B07E2E8BEC65E1 ON smartphone');
-        $this->addSql('ALTER TABLE smartphone DROP device_state_id, CHANGE estimate_at estimate_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\'');
+        $this->addSql('ALTER TABLE smartphone DROP device_state_id, CHANGE estimate_at estimate_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT \'(DC2Type:datetime_immutable)\'');
     }
 
     public function down(Schema $schema): void

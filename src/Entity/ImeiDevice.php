@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ImeiDeviceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
 
 #[ORM\Entity(repositoryClass: ImeiDeviceRepository::class)]
 class ImeiDevice
@@ -20,19 +21,19 @@ class ImeiDevice
     #[ORM\JoinColumn(nullable: false)]
     private ?Model $model = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $screenSize = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $yearManufacture = null;
 
-    #[ORM\Column(length: 25)]
+    #[ORM\Column(length: 25, nullable: true)]
     private ?string $networkSpeed = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $stockageNumber = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $ramNumber = null;
 
     public function getId(): ?int

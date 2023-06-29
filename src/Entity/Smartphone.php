@@ -61,9 +61,9 @@ class Smartphone
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $calculatePrice = null;
 
-    public function __construc()
+    public function __construct()
     {
-        $this->setEstimateAt(new \DateTimeImmutable());
+        $this->estimateAt = new \DateTimeImmutable();
     }
     public function getId(): ?int
     {
