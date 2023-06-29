@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
-use App\Entity\IdentifySearch;
 use App\Form\IdentifyType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\IdentifySearch;
+use App\Repository\ModelRepository;
+use function PHPUnit\Framework\isEmpty;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-use function PHPUnit\Framework\isEmpty;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/', name: 'smartphone_')]
 class SmartphoneController extends AbstractController
@@ -63,6 +64,17 @@ class SmartphoneController extends AbstractController
 		return $this->render('smartphone/identify.html.twig', [
 			'form' => $form,
 			'motivationPhrase' => $motivationPhrase,
+		]);
+	}
+
+	#[IsGranted('ROLE_USER')]
+	#[Route('/smartphone/resultat', name: 'smartphone_result')]
+	public function showResult(ModelRepository $modelRepository): Response
+	{
+		// $modelSmartphone = $modelRepository->findAll();
+
+		return $this->render('smartphone/result.html.twig', [
+			// 'modelSmartphone' => $modelSmartphone,
 		]);
 	}
 
