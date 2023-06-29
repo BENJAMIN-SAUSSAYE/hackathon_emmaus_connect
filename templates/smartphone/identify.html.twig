@@ -7,35 +7,39 @@
 
 {% block stylesheets %}
 	{{ parent() }}
+	{{ encore_entry_link_tags('identify') }}
 {% endblock %}
 
 {% block body %}
 	<main class="container-fluid">
 		<div class="row mt-4">
 			<div class="d-flex justify-content-center align-items-center">
-				<div class="col-8">
-					<div class="bg-light rounded-3 p-3 m-auto">
+				<div class="col-xl-6">
+					<div class="main-container bg-light rounded-3 p-4">
 
-						<div>
+						<div class="container-title mb-4">
 							<h1 class="fw-bold text-tertiary d-flex justify-content-center align-items-center gap-3">
 								{% include 'components/svg/icon_loupe.svg' %}
 								Identifier votre Smartphone</h1>
 						</div>
 
 						<div class="">
-
-							<form action="{{ path('smartphone_identify') }}" method="post" class="d-flex flex-column gap-1 mt-5">
-
-								<div class="mb-3 text-start">
-									<label for="username" class="form-label fw-bold custom-text-size text-tertiary">Email</label>
-									<input type="text" class="form-control border-0 bg-light" id="username" name="_username" value="">
-								</div>
-
-								<div class="d-flex flex-column justify-content-center align-items-center m-auto">
-									<button type="submit" class="btn my-5 text-light bg-secondary rounded-pill fw-bold custom-text-size px-3">RECHERCHER</button>
-								</div>
-							</form>
-
+							{{ component('formIdentify') }}
+							{# 
+																												<form action="{{ path('smartphone_identify') }}" method="post" class="d-flex flex-column gap-2 mt-5 m-xl-5 p-4 m-auto">
+																													<div class="mb-4 text-start">
+																														<label for="searchTxt" class="form-label fw-bold custom-text-size text-tertiary">IMEI (International Mobile Equipment Identity)</label>
+																														<br>
+																														<label for="searchTxt" class="form-label fw-bold custom-text-size text-tertiary">Marque du téléphone</label>
+																														<input type="text" class="form-control bg-light" id="searchTxt" name="searchTxt" value="">
+																													</div>
+																					
+																													<div class="mb-4 text-start">
+																														<label for="modelTxt" class="form-label fw-bold custom-text-size text-tertiary">Modèle du smatphone</label>
+																														<input type="text" class="form-control bg-light" id="modelTxt" name="modelTxt" value="">
+																													</div>
+																												</form> 
+																												#}
 						</div>
 					</div>
 				</div>
