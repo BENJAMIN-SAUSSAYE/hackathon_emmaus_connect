@@ -13,6 +13,9 @@
 // 4. Include any default map overrides here
 $custom-colors: (
   "tertiary": $tertiary,
+  "primary-light": $primary-light,
+  "secondary-light": $secondary-light,
+  "light": $light
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);

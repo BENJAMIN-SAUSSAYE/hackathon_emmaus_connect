@@ -27,3 +27,11 @@ html {
 .custom-letter-spacing {
   letter-spacing: 3px;
 }
+
+.navbar-toggler-icon {
+  color: $primary;
+}
+
+.custom-svg-position {
+  transform: translateY(-3px);
+}

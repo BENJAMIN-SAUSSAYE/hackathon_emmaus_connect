@@ -2,8 +2,8 @@
 
 namespace App\Service;
 
+use App\Entity\Category;
 use App\Entity\Smartphone;
-use App\Repository\SmartphoneRepository;
 
 class CalculatePriceService
 {
@@ -38,16 +38,63 @@ class CalculatePriceService
 		['value' => 1024, 'rank' => 110],
 	];
 
+	private const COEF_REGUL = 5;
+	private float $finalPrice = 0.0;
 
-	public function __construct(private SmartphoneRepository $smartphoneRepository)
+	public function getCalulatePrice(Smartphone $smartphone): float
 	{
+		return $this->calculateFinalPrice($smartphone);
 	}
 
-	public function getPrice()
+	public function getPriceCategory(Smartphone $smartphone): string
 	{
+		$FinalPrice = $this->calculateFinalPrice($smartphone);
+		$category = new Category();
+		return $category->getCode($FinalPrice);
 	}
 
-	public function getCategory()
+	private function calculateFinalPrice(Smartphone $smartphone): float
 	{
+		$valRam = $this->getValRam($smartphone->getRamNumber());
+		$valStock = $this->getValStock($smartphone->getStockageNumber());
+		$basePrice = $smartphone->getBasePrice();
+		$ponderation = $smartphone->getPonderation();
+
+		$rate = (($valRam + $valStock) / self::COEF_REGUL);
+		$intermediatePrice = floor($basePrice + ($basePrice * $rate / 100));
+		return $intermediatePrice + ($ponderation * $intermediatePrice / 100);
+	}
+	private function getValRam(int $ramNumber): int
+	{
+		$val = '';
+		foreach (self::PARAM_RAM as $itemRam) {
+			if ($itemRam['value'] === $ramNumber) {
+				$val = $itemRam['rank'];
+				break;
+			}
+		}
+		return $val;
+	}
+
+	private function getValStock(int $stockageNumber): int
+	{
+		$val = '';
+		foreach (self::PARAM_STOCKAGE as $itemStockage) {
+			if ($itemStockage['value'] === $stockageNumber) {
+				$val = $itemStockage['rank'];
+				break;
+			}
+		}
+		return $val;
+	}
+
+	public function getAllRamValues(): array
+	{
+		return array_column(self::PARAM_RAM, 'value');
+	}
+
+	public function getAllStockageValues(): array
+	{
+		return array_column(self::PARAM_STOCKAGE, 'value');
 	}
 }

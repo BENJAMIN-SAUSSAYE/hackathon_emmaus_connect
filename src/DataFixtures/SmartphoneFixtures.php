@@ -6,6 +6,7 @@ use App\DataFixtures\BrandFixtures;
 use App\DataFixtures\ModelFixtures;
 use App\DataFixtures\UserFixtures;
 use App\Entity\Smartphone;
+use App\Service\CalculateCarbonService;
 use App\Service\CalculatePriceService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -15,6 +16,10 @@ use Faker\Factory;
 class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
 {
     public const SMARTPHONE_COUNT = 50;
+
+    public function __construct(private CalculatePriceService $calculatePriceService, private CalculateCarbonService $calculateCarbonService)
+    {
+    }
 
     public function load(ObjectManager $manager): void
     {
@@ -47,10 +52,11 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setScreenSize($faker->randomElement([5, 6, 3, 7, 8]));
             $smartphone->setYearManufacture($faker->numberBetween(2010, 2023));
             $smartphone->setComment($faker->sentence($nbWords = 25));
-            $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
+            $smartphone->setPonderation($faker->randomElement([-50, -30, -20, 0, 10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
-            $smartphone->setRateCo2($faker->numberBetween(10, 30));
-            $smartphone->setCalculatePrice($faker->numberBetween(1, 100));
+            $smartphone->setRateCo2($this->calculateCarbonService->getCarbonne($smartphone));
+            //CALCULATE PRICE FINAL
+            $smartphone->setCalculatePrice($this->calculatePriceService->getCalulatePrice($smartphone));
             $manager->persist($smartphone);
         }
 
@@ -74,10 +80,11 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setYearManufacture($itemDevice->getYearManufacture());
 
             $smartphone->setComment($faker->sentence($nbWords = 25));
-            $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
+            $smartphone->setPonderation($faker->randomElement([-50, -30, -20, 0, 10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
-            $smartphone->setRateCo2($faker->numberBetween(10, 30));
-            $smartphone->setCalculatePrice($faker->numberBetween(1, 100));
+            $smartphone->setRateCo2($this->calculateCarbonService->getCarbonne($smartphone));
+            //CALCULATE PRICE FINAL
+            $smartphone->setCalculatePrice($this->calculatePriceService->getCalulatePrice($smartphone));
             $manager->persist($smartphone);
         }
 

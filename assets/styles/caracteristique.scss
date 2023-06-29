@@ -1,0 +1,36 @@
+span {
+    width: auto;
+    height: auto;
+}
+
+.custom-transform {
+    transform: translateX(-25px)
+}
+
+.box-shadow {
+    box-shadow: 15px 15px rgba(37, 36, 78, 0.2);
+}
+
+.line-radio {
+    position: absolute;
+    background-color: orange;
+    height: 5px;
+    width: 100%;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+.custom-height {
+    height: 150px;
+}
+
+.custom-align {
+    transform: translate(-50%, 40px);
+}
+
+.ponderation-label {
+    border: 1px solid red;
+    width: 150px;
+    position: absolute;
+}
