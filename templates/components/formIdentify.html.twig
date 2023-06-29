@@ -1,7 +1,7 @@
 <div {{ attributes }} class="p-4">
 
 	{{ form_start(form) }}
-	<div class="container shadow">
+	<div class="container">
 		<div class="mb-4 text-start">
 			<label for="searchTxt" class="form-label fw-bold custom-text-size text-tertiary">Marque du téléphone</label>
 			<div class="form-error">{{ form_errors(form.brand) }}</div>
@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class="d-flex flex-column justify-content-center align-items-end m-auto">
-		<button type="submit" class="shadow btn my-xl-5 mt-3 text-light bg-secondary rounded-pill fw-bold custom-text-size px-3">RECHERCHER</button>
+		<button type="submit" class="btn my-xl-5 mt-3 text-light bg-secondary rounded-pill fw-bold custom-text-size px-3">Rechercher</button>
 	</div>
 	{{ form_end(form) }}
 </div>
