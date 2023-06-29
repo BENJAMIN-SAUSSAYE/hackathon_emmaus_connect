@@ -6,6 +6,7 @@ use App\DataFixtures\BrandFixtures;
 use App\DataFixtures\ModelFixtures;
 use App\DataFixtures\UserFixtures;
 use App\Entity\Smartphone;
+use App\Service\CalculateCarbonService;
 use App\Service\CalculatePriceService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -16,9 +17,10 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
 {
     public const SMARTPHONE_COUNT = 50;
 
-    public function __construct()
+    public function __construct(private CalculatePriceService $calculatePriceService, private CalculateCarbonService $calculateCarbonService)
     {
     }
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
@@ -52,10 +54,9 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setComment($faker->sentence($nbWords = 25));
             $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
-            $smartphone->setRateCo2($faker->numberBetween(10, 30));
+            $smartphone->setRateCo2($this->calculateCarbonService->getCarbonne($smartphone));
             //CALCULATE PRICE FINAL
-            $calculatePriceService = new CalculatePriceService($smartphone);
-            $smartphone->setCalculatePrice($calculatePriceService->getFinalPrice());
+            $smartphone->setCalculatePrice($this->calculatePriceService->getCalulatePrice($smartphone));
             $manager->persist($smartphone);
         }
 
@@ -81,11 +82,9 @@ class SmartphoneFixtures extends Fixture implements DependentFixtureInterface
             $smartphone->setComment($faker->sentence($nbWords = 25));
             $smartphone->setPonderation($faker->randomElement([-100, -50, -20, 0, +10]));
             $smartphone->setDevicePicturePath("/images/placeholder/iphonePlaceHolder.svg");
-            $smartphone->setRateCo2($faker->numberBetween(10, 30));
-
+            $smartphone->setRateCo2($this->calculateCarbonService->getCarbonne($smartphone));
             //CALCULATE PRICE FINAL
-            $calculatePriceService = new CalculatePriceService($smartphone);
-            $smartphone->setCalculatePrice($calculatePriceService->getFinalPrice());
+            $smartphone->setCalculatePrice($this->calculatePriceService->getCalulatePrice($smartphone));
             $manager->persist($smartphone);
         }
 
