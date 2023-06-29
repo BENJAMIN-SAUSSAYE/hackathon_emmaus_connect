@@ -4,7 +4,6 @@
 body {
   background-color: $primary;
   padding-block-start: $navbar-height;
-
 }
 
 h1,
@@ -13,9 +12,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-title;
+  font-family: $font-base;
   color: $dark;
-  letter-spacing: 2px;
 }
 
 html {
