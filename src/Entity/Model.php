@@ -16,21 +16,8 @@ class Model
 
     #[ORM\Column(length: 255)]
     private ?string $name = null;
-
-    #[ORM\Column]
-    private ?int $screenSize = null;
-
-    #[ORM\Column]
-    private ?int $yearManufacture = null;
-
     #[ORM\Column(length: 25)]
-    private ?string $networkSpeed = null;
-
-    #[ORM\Column]
-    private ?int $stockageNumber = null;
-
-    #[ORM\Column]
-    private ?int $ramNumber = null;
+    private ?string $codeNumber = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $basePrice = null;
@@ -38,9 +25,6 @@ class Model
     #[ORM\ManyToOne(inversedBy: 'models')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Brand $brand = null;
-
-    #[ORM\Column(length: 25)]
-    private ?string $codeNumber = null;
 
     public function getId(): ?int
     {
@@ -55,66 +39,6 @@ class Model
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getScreenSize(): ?int
-    {
-        return $this->screenSize;
-    }
-
-    public function setScreenSize(int $screenSize): static
-    {
-        $this->screenSize = $screenSize;
-
-        return $this;
-    }
-
-    public function getYearManufacture(): ?int
-    {
-        return $this->yearManufacture;
-    }
-
-    public function setYearManufacture(int $yearManufacture): static
-    {
-        $this->yearManufacture = $yearManufacture;
-
-        return $this;
-    }
-
-    public function getNetworkSpeed(): ?string
-    {
-        return $this->networkSpeed;
-    }
-
-    public function setNetworkSpeed(string $networkSpeed): static
-    {
-        $this->networkSpeed = $networkSpeed;
-
-        return $this;
-    }
-
-    public function getStockageNumber(): ?int
-    {
-        return $this->stockageNumber;
-    }
-
-    public function setStockageNumber(int $stockageNumber): static
-    {
-        $this->stockageNumber = $stockageNumber;
-
-        return $this;
-    }
-
-    public function getRamNumber(): ?int
-    {
-        return $this->ramNumber;
-    }
-
-    public function setRamNumber(int $ramNumber): static
-    {
-        $this->ramNumber = $ramNumber;
 
         return $this;
     }

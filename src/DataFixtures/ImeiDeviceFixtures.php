@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\ImeiDevice;
+use App\Service\CalculatePriceService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
@@ -28,10 +29,24 @@ class ImeiDeviceFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::IMEI_NUMBERS as $imeiNumner) {
             $imeiDevice = new ImeiDevice();
             $imeiDevice->setImeiNumber($imeiNumner);
+
             $randomModel = $faker->randomElement(ModelFixtures::MODELS);
             $model = $this->getReference('Model_' . $randomModel['numero']);
             $imeiDevice->setModel($model);
+
+            $randRamItem = $faker->randomElement(CalculatePriceService::PARAM_RAM);
+            $imeiDevice->setRamNumber($randRamItem['value']);
+
+            $randStockageItem = $faker->randomElement(CalculatePriceService::PARAM_STOCKAGE);
+            $imeiDevice->setStockageNumber($randStockageItem['value']);
+
+            $imeiDevice->setScreenSize($faker->randomElement([5, 6, 3, 7, 8]));
+            $imeiDevice->setYearManufacture($faker->numberBetween(2010, 2023));
+
+            $imeiDevice->setNetworkSpeed($faker->randomElement(['3G', '4G', '5G']));
+
             $manager->persist($imeiDevice);
+            $this->addReference('ImeiDevice_' . $imeiNumner, $imeiDevice);
         }
         $manager->flush();
     }

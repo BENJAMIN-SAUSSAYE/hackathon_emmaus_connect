@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ImeiDeviceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Nullable;
 
 #[ORM\Entity(repositoryClass: ImeiDeviceRepository::class)]
 class ImeiDevice
@@ -19,6 +20,21 @@ class ImeiDevice
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Model $model = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $screenSize = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $yearManufacture = null;
+
+    #[ORM\Column(length: 25, nullable: true)]
+    private ?string $networkSpeed = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $stockageNumber = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $ramNumber = null;
 
     public function getId(): ?int
     {
@@ -45,6 +61,66 @@ class ImeiDevice
     public function setModel(?Model $model): static
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function getScreenSize(): ?int
+    {
+        return $this->screenSize;
+    }
+
+    public function setScreenSize(int $screenSize): static
+    {
+        $this->screenSize = $screenSize;
+
+        return $this;
+    }
+
+    public function getYearManufacture(): ?int
+    {
+        return $this->yearManufacture;
+    }
+
+    public function setYearManufacture(int $yearManufacture): static
+    {
+        $this->yearManufacture = $yearManufacture;
+
+        return $this;
+    }
+
+    public function getNetworkSpeed(): ?string
+    {
+        return $this->networkSpeed;
+    }
+
+    public function setNetworkSpeed(string $networkSpeed): static
+    {
+        $this->networkSpeed = $networkSpeed;
+
+        return $this;
+    }
+
+    public function getStockageNumber(): ?int
+    {
+        return $this->stockageNumber;
+    }
+
+    public function setStockageNumber(int $stockageNumber): static
+    {
+        $this->stockageNumber = $stockageNumber;
+
+        return $this;
+    }
+
+    public function getRamNumber(): ?int
+    {
+        return $this->ramNumber;
+    }
+
+    public function setRamNumber(int $ramNumber): static
+    {
+        $this->ramNumber = $ramNumber;
 
         return $this;
     }
