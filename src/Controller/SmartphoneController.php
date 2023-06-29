@@ -49,7 +49,6 @@ class SmartphoneController extends AbstractController
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			//dd($identifySearch);
 			return $this->redirectToRoute('app_caracteristic', ['id_brand' => $identifySearch->getBrand()->getId()], Response::HTTP_SEE_OTHER);
 		}
 		return $this->render('smartphone/identify.html.twig', [

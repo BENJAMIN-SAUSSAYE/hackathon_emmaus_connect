@@ -36,7 +36,7 @@ class IdentifyType extends AbstractType
 				'choice_label'  => 'name',
 				'placeholder' => 'Quelle marque ?',
 				'attr' => [
-					'class' => 'form-control border border-secondary',
+					'class' => 'form-select form-select-lg mb-3 bg-light border-primary',
 				],
 			])
 			->add(
@@ -47,7 +47,7 @@ class IdentifyType extends AbstractType
 					'required' => false,
 					'attr' => [
 						'placeholder' => 'N° de Imei...',
-						'class' => 'form-control border border-secondary',
+						'class' => 'form-control fs-4 bg-light',
 					],
 				]
 			);
@@ -106,7 +106,7 @@ class IdentifyType extends AbstractType
 				'invalid_message' => false,
 				'auto_initialize' => false,
 				'attr' => [
-					'class' => 'form-control border border-secondary',
+					'class' => 'form-select form-select-lg mb-3 bg-light border-primary',
 				],
 			])
 			->addEventListener(FormEvents::POST_SUBMIT, [$this, 'storeDependencies']);
