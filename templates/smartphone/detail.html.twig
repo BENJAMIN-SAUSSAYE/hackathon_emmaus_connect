@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ smartphone.model.name }}</h1>
+    <h3>Marque: {{ smartphone.model.brand.name }}</h3>
+    <h3>Modèle: {{ smartphone.model.name }}</h3>
+    <h3>Taille de l'écran: {{ smartphone.screenSize}}" pouces</h3>
+    <h3>Mémoire vive (RAM): {{ smartphone.ramNumber }} Go</h3>
+    <h3>Capacité de stockage: {{smartphone.stockageNumber}} Go</h3>
+    <h3>Technologie cellulaire: {{smartphone.networkSpeed}}</h3>
+    <h2>IMEI: {{smartphone.imeiNumber}}</h2>
+{% endblock %}
+
