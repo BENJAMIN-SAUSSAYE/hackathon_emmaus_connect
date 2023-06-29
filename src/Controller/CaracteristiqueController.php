@@ -11,6 +11,7 @@ class CaracteristiqueController extends AbstractController
     #[Route('/caracteristique', name: 'app_caracteristique')]
     public function index(): Response
     {
+
         return $this->render('caracteristique/index.html.twig', [
             'controller_name' => 'CaracteristiqueController',
         ]);
