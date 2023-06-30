@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Smartphone{% endblock %}
+
+{% block body %}
+    <h1>Smartphone</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ smartphone.id }}</td>
+            </tr>
+            <tr>
+                <th>ImeiNumber</th>
+                <td>{{ smartphone.imeiNumber }}</td>
+            </tr>
+            <tr>
+                <th>RamNumber</th>
+                <td>{{ smartphone.ramNumber }}</td>
+            </tr>
+            <tr>
+                <th>StockageNumber</th>
+                <td>{{ smartphone.stockageNumber }}</td>
+            </tr>
+            <tr>
+                <th>ScreenSize</th>
+                <td>{{ smartphone.screenSize }}</td>
+            </tr>
+            <tr>
+                <th>NetworkSpeed</th>
+                <td>{{ smartphone.networkSpeed }}</td>
+            </tr>
+            <tr>
+                <th>YearManufacture</th>
+                <td>{{ smartphone.yearManufacture }}</td>
+            </tr>
+            <tr>
+                <th>Ponderation</th>
+                <td>{{ smartphone.ponderation }}</td>
+            </tr>
+            <tr>
+                <th>BasePrice</th>
+                <td>{{ smartphone.basePrice }}</td>
+            </tr>
+            <tr>
+                <th>DevicePicturePath</th>
+                <td>{{ smartphone.devicePicturePath }}</td>
+            </tr>
+            <tr>
+                <th>RateCo2</th>
+                <td>{{ smartphone.rateCo2 }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ smartphone.comment }}</td>
+            </tr>
+            <tr>
+                <th>EstimateAt</th>
+                <td>{{ smartphone.estimateAt ? smartphone.estimateAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CalculatePrice</th>
+                <td>{{ smartphone.calculatePrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_smartphone_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_smartphone_edit', {'id': smartphone.id}) }}">edit</a>
+
+    {{ include('admin_smartphone/_delete_form.html.twig') }}
+{% endblock %}

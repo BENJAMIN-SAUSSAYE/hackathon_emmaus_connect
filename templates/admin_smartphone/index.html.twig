@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Smartphone index{% endblock %}
+
+{% block body %}
+    <h1>Smartphone index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImeiNumber</th>
+                <th>RamNumber</th>
+                <th>StockageNumber</th>
+                <th>ScreenSize</th>
+                <th>NetworkSpeed</th>
+                <th>YearManufacture</th>
+                <th>Ponderation</th>
+                <th>BasePrice</th>
+                <th>DevicePicturePath</th>
+                <th>RateCo2</th>
+                <th>Comment</th>
+                <th>EstimateAt</th>
+                <th>CalculatePrice</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for smartphone in smartphones %}
+            <tr>
+                <td>{{ smartphone.id }}</td>
+                <td>{{ smartphone.imeiNumber }}</td>
+                <td>{{ smartphone.ramNumber }}</td>
+                <td>{{ smartphone.stockageNumber }}</td>
+                <td>{{ smartphone.screenSize }}</td>
+                <td>{{ smartphone.networkSpeed }}</td>
+                <td>{{ smartphone.yearManufacture }}</td>
+                <td>{{ smartphone.ponderation }}</td>
+                <td>{{ smartphone.basePrice }}</td>
+                <td>{{ smartphone.devicePicturePath }}</td>
+                <td>{{ smartphone.rateCo2 }}</td>
+                <td>{{ smartphone.comment }}</td>
+                <td>{{ smartphone.estimateAt ? smartphone.estimateAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ smartphone.calculatePrice }}</td>
+                <td>
+                    <a href="{{ path('app_admin_smartphone_show', {'id': smartphone.id}) }}">show</a>
+                    <a href="{{ path('app_admin_smartphone_edit', {'id': smartphone.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_smartphone_new') }}">Create new</a>
+{% endblock %}

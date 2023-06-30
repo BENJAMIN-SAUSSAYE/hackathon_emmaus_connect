@@ -66,7 +66,7 @@ class SmartphoneController extends AbstractController
 			if (!empty($identifySearch->getImeiNumber()) && is_numeric($identifySearch->getImeiNumber())) {
 				$params = ['imei' => $identifySearch->getImeiNumber()];
 			}
-			return $this->redirectToRoute('app_caracteristique', $params, Response::HTTP_SEE_OTHER);
+			return $this->redirectToRoute('app_caracteristique_new',  $params, Response::HTTP_SEE_OTHER);
 		}
 		return $this->render('smartphone/identify.html.twig', [
 			'form' => $form,
@@ -75,7 +75,7 @@ class SmartphoneController extends AbstractController
 	}
 
 	#[IsGranted('ROLE_USER')]
-	#[Route('/smartphone/resultat/{id}', name: 'smartphone_result')]
+	#[Route('/smartphone/resultat/{id}', name: 'result')]
 	public function showResult(Smartphone $smartphone, ModelRepository $modelRepository, CalculatePriceService $calculatePriceService): Response
 	{
 		$categoryLabel = $calculatePriceService->getPriceCategory($smartphone);
