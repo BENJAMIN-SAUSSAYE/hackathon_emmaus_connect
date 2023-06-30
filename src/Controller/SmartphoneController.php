@@ -120,7 +120,15 @@ class SmartphoneController extends AbstractController
 	#[Route('/pdf/{id}', name: 'pdf')]
 	public function generatePdf(Smartphone $smartphone, PdfService $pdf)
 	{
-		$html = $this->render('smartphone/pdf.html.twig', ['smartphone' => $smartphone]);
+		//$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
+
+		$html =  $this->renderView('smartphone/pdf.html.twig', [
+			'categoryLabel' => '',
+			'smartphone' => $smartphone,
+			'congratulationsPhrase' => '',
+		]);
+
+		//$html = $this->render('smartphone/pdf.html.twig', ['smartphone' => $smartphone]);
 		$pdf->downloadPdfFile($html);
 	}
 }
