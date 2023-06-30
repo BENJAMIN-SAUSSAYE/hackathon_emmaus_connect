@@ -5,16 +5,15 @@ namespace App\Form;
 use App\Entity\Smartphone;
 use App\Service\CalculatePriceService;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class SmartphoneType extends AbstractType
 {
-    public function __construct(private CalculatePriceService $calculatePriceService){
 
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -23,23 +22,50 @@ class SmartphoneType extends AbstractType
                 'ramNumber',
                 choiceType::class,
                 [
-                    'choices' => $this->calculatePriceService.get
+                    'choices' =>  [
+                        8,
+                        16,
+                        32,
+                        16,
+                        64,
+                        128,
+                        256,
+                        512,
+                        1024
+                    ],
                     'label' => "Mémoire vive",
                     'attr' => ["class" => ""],
+                    'expanded' => true,
+                    'multiple' => false,
                 ]
             )
             ->add(
                 'stockageNumber',
-                RadioType::class,
+                ChoiceType::class,
                 [
+
+                    'choices' => [
+                        8,
+                        16,
+                        32,
+                        16,
+                        64,
+                        128,
+                        256,
+                        512,
+                        1024
+                    ],
                     'label' => "Capacité de stockage",
                     'attr' => ["class" => ""],
+                    'expanded' => true,
+                    'multiple' => false,
                 ]
             )
             ->add(
                 'ponderation',
-                RadioType::class,
+                choiceType::class,
                 [
+                    'choices' => array_Flip(["rayé des deux côtés", "rayé à l'avant", "rayé à l'arrière", "bon état", "parfait état",]),
                     'label' => 'Pondération',
                     'attr' => ['class' => ''],
                 ]

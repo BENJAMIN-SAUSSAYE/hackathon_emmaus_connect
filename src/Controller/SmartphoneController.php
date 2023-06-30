@@ -58,7 +58,7 @@ class SmartphoneController extends AbstractController
 			if (!empty($identifySearch->getImeiNumber()) && is_numeric($identifySearch->getImeiNumber())) {
 				$params = ['imei' => $identifySearch->getImeiNumber()];
 			}
-			return $this->redirectToRoute('app_caracteristique', $params, Response::HTTP_SEE_OTHER);
+			return $this->redirectToRoute('app_caracteristique_new',  $params, Response::HTTP_SEE_OTHER);
 		}
 		return $this->render('smartphone/identify.html.twig', [
 			'form' => $form,
