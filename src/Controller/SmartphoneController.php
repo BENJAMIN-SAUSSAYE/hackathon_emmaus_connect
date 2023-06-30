@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Smartphone;
+use App\Service\PdfService;
 use App\Entity\User;
 use App\Form\IdentifyType;
 use App\Entity\IdentifySearch;
@@ -114,5 +115,12 @@ class SmartphoneController extends AbstractController
 		$randomIndex = array_rand(self::CONGRATULATIONS_PHRASES);
 		$congratulationsPhrase = self::CONGRATULATIONS_PHRASES[$randomIndex];
 		return $congratulationsPhrase;
+	}
+
+	#[Route('/pdf/{id}', name: 'pdf')]
+	public function generatePdf(Smartphone $smartphone, PdfService $pdf)
+	{
+		$html = $this->render('smartphone/pdf.html.twig', ['smartphone' => $smartphone]);
+		$pdf->downloadPdfFile($html);
 	}
 }
