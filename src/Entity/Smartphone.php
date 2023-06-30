@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SmartphoneRepository;
+use App\Service\CalculateCarbonService;
+use App\Service\CalculatePriceService;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -61,7 +63,7 @@ class Smartphone
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $calculatePrice = null;
 
-    public function __construct()
+    public function __construct(private CalculatePriceService $calculatePriceService, private CalculateCarbonService $calculateCarbonService)
     {
         $this->estimateAt = new \DateTimeImmutable();
     }
@@ -257,4 +259,22 @@ class Smartphone
 
         return $this;
     }
+
+    // public function getCategorie(): ?string
+    // {
+    //     if (isset($this)) {
+    //         if (!empty($this->basePrice) && isset($this->ramNumber) && isset($this->stockageNumber)) {
+    //             return $this->calculatePriceService->getPriceCategory($this);
+    //         } else {
+    //             return "undefined";
+    //         }
+    //     }
+    // }
+
+    // public function getCarbonne(): ?int
+    // {
+    //     if (isset($this)) {
+    //         return $this->calculateCarbonService->getCarbonne($this);
+    //     }
+    // }
 }

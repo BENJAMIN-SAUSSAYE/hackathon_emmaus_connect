@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Smartphone;
+use App\Entity\User;
 use App\Form\IdentifyType;
 use App\Entity\IdentifySearch;
 use App\Repository\ModelRepository;
+use App\Repository\SmartphoneRepository;
 use App\Service\CalculatePriceService;
 
+use Symfony\Bundle\SecurityBundle\Security;
 use function PHPUnit\Framework\isEmpty;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -85,17 +88,16 @@ class SmartphoneController extends AbstractController
 	}
 
 	#[IsGranted('ROLE_USER')]
-	#[Route('/{id}', name: 'details')]
-	public function showDetails($id): Response
+	#[Route('/smartphone/stock/', name: 'stock')]
+	public function showStock(SmartphoneRepository $smartphoneRepository, Security $security): Response
 	{
-		// Récupérer les détails du téléphone portable avec l'ID donné
-
-		// ...
-
-		$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
-		return $this->render('smartphone/details.html.twig', [
-			//'phoneDetails' => $phoneDetails,
-			'congratulationsPhrase' => $congratulationsPhrase,
+		/** @var User $user */
+		$user = $security->getUser();
+		$smartphones = $smartphoneRepository->findBy(['operator' => $user], ['estimateAt' => 'ASC']);
+		//$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
+		return $this->render('smartphone/stock.html.twig', [
+			'smartphones' => $smartphones,
+			//'congratulationsPhrase' => $congratulationsPhrase,
 		]);
 	}
 
