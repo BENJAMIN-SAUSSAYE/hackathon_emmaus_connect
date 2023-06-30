@@ -1,0 +1,16 @@
+@import "variables";
+
+.custom-btn {
+    width: auto;
+    padding: 0.5rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+.badge {
+    min-width: 70px;
+}
+
+.custom-shadow {
+    box-shadow: 15px 15px rgba(37, 36, 78, 0.2);
+}
