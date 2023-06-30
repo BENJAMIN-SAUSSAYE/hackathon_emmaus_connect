@@ -23,29 +23,20 @@
 						<div class="d-flex mt-4">
 							<div>
 								<ul class="list-unstyled fw-bolder custom-lh">
-									<li>Marque :</li>
-									<li>Modèle :</li>
-									<li>Taille de l'écran :</li>
-									<li>Mémoire vive (RAM) :</li>
-									<li>Capacité de stockage :</li>
-									<li>Technologie cellulaire :</li>
-								</ul>
-							</div>
-							<div class="ms-3 ms-md-4 ps-xl-5">
-								<ul class="list-unstyled custom-lh">
-									<li>{{ smartphone.model.brand.name }}</li>
-									<li>
+									<li>Marque :
+										{{ smartphone.model.brand.name }}</li>
+									<li>Modèle :
 										{{ smartphone.model.codeNumber }}
 										-
-										{{ smartphone.yearManufacture }}
-									</li>
-									<li>{{ smartphone.screenSize }}
-										pouces</li>
-									<li>{{ smartphone.ramNumber }}
-										Go</li>
-									<li>{{ smartphone.stockageNumber }}
-										Go</li>
-									<li>{{ smartphone.networkSpeed }}</li>
+										{{ smartphone.yearManufacture }}</li>
+									<li>Taille de l'écran :
+										{{ smartphone.screenSize }}</li>
+									<li>Mémoire vive (RAM) :
+										{{ smartphone.ramNumber }}</li>
+									<li>Capacité de stockage :
+										{{ smartphone.stockageNumber }}</li>
+									<li>Technologie cellulaire :
+										{{ smartphone.networkSpeed }}</li>
 								</ul>
 							</div>
 						</div>
