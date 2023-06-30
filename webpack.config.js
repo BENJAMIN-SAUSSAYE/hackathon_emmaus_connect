@@ -35,8 +35,9 @@ Encore
   .addEntry("app", "./assets/app.js")
   .addStyleEntry("login", "./assets/styles/login.scss")
   .addStyleEntry("identify", "./assets/styles/identify.scss")
-  .addStyleEntry('smartphone-result', './assets/styles/smartphone-result.scss')
+  .addStyleEntry("smartphone-result", "./assets/styles/smartphone-result.scss")
   .addStyleEntry("caracteristique", "./assets/styles/caracteristique.scss")
+  .addStyleEntry("stock", "./assets/styles/stock.scss")
 
   // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
   .splitEntryChunks()
@@ -97,4 +98,3 @@ fullConfig.devServer = {
 };
 
 module.exports = fullConfig;
-
