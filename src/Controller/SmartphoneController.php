@@ -75,7 +75,7 @@ class SmartphoneController extends AbstractController
 	}
 
 	#[IsGranted('ROLE_USER')]
-	#[Route('/smartphone/resultat/{id}', name: 'smartphone_result')]
+	#[Route('/smartphone/resultat/{id}', name: 'result')]
 	public function showResult(Smartphone $smartphone, ModelRepository $modelRepository, CalculatePriceService $calculatePriceService): Response
 	{
 		$categoryLabel = $calculatePriceService->getPriceCategory($smartphone);

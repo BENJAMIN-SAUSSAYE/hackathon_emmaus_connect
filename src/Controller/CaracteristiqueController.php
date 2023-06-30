@@ -29,8 +29,8 @@ class CaracteristiqueController extends AbstractController
     #[Route('/new', name: 'app_caracteristique_new', methods: ['GET', 'POST'])]
     public function new(ModelRepository $modelRepository, ImeiDeviceRepository $imeiDeviceRepository, CalculatePriceService $calculatePriceService, CalculateCarbonService $calculateCarbonService, Request $request, SmartphoneRepository $smartphoneRepository): Response
     {
-        $modelId = ($request->query->get('modelId')) ?? null;
-        $imei = ($request->query->get('imei')) ?? null;
+        $modelId = ($request->query->get('id_model'));
+        $imei = ($request->query->get('imei'));
         $smartphone = new Smartphone();
         /** @var User $user */
         $user = $this->getUser();
@@ -42,7 +42,7 @@ class CaracteristiqueController extends AbstractController
             $smartphone->setBasePrice($model->getBasePrice());
         }
         if ($imei !== null) {
-            $imeiDevice = $imeiDeviceRepository->findOneBy(['imei_number' => $imei]);
+            $imeiDevice = $imeiDeviceRepository->findOneBy(['imeiNumber' => $imei]);
 
             $smartphone->setModel($imeiDevice->getModel());
             $smartphone->setBasePrice($imeiDevice->getModel()->getBasePrice());
