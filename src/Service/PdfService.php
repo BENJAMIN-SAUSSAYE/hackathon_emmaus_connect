@@ -23,6 +23,6 @@ class PdfService
     {
         $this->domPdf->loadHtml($html);
         $this->domPdf->render();
-        $this->domPdf->stream('details.pdf');
+        $this->domPdf->stream('descriptif.pdf');
     }
 }

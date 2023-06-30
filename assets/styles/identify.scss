@@ -1,0 +1,21 @@
+@import "_variables.scss";
+
+form .container {
+  padding: 5%;
+  border-radius: 8px;
+  border: $primary 2px solid;
+  border-left: $primary 8px solid;
+  input[type="text"] {
+    border-radius: 8px;
+    border: $primary 2px solid;
+  }
+}
+
+.container-title {
+  padding-top: 4%;
+}
+
+.main-container {
+  margin-top: 4%;
+  margin-inline: 4%;
+}

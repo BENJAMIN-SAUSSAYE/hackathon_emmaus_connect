@@ -1,0 +1,102 @@
+{% extends 'visitor.html.twig' %}
+
+{% block title %}
+{{ parent() }}
+- Caractéristique
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{{ encore_entry_link_tags('caracteristique') }}
+{% endblock %}
+
+{% block body %}
+<main class="container ">
+    <div class=" p-3 pe-3  mb-5 mt-5 d-flex justify-content-center flex-column align-items-center row">
+        <div class="col-8 bg-light position-relative box-shadow rounded border p-5">
+
+            <h1 class="text-tertiary">{% include "components/svg/icon_stats.svg.twig" %} Caractéristique du Smartphone
+            </h1>
+            <div class="row d-flex m-auto flex-row">
+                <div class="col-5">
+                    <img class="object-fit-cover w-100" src="{{ asset('build/images/iphone14.png') }}" alt="iphone">
+                </div>
+                <div class="col">
+                    <form class="d-flex p-1 flex-column gap-3" action="">
+                        <div class="d-flex flex-column">
+                            <label for="">Marque</label>
+                            <div class="d-flex align-items-center">
+                                <input class="border border-primary w-100 rounded" placeholder=" Apple" type="text">
+                                {% include "components/svg/icon_edit.svg.twig" %}
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <label for="">Nom du model</label>
+                            <div class="d-flex align-items-center">
+                                <input class="border border-primary w-100 rounded" placeholder=" iphone14" type="text">
+                                {% include "components/svg/icon_edit.svg.twig" %}
+                            </div>
+                        </div>
+                        <label for="">Mémoire vive</label>
+                        <div class="d-flex flex-row flex-wrap gap-3">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="1">2 Go</label>
+                            <input class="invisible" type="radio" name="" id="1">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="2">3 Go</label>
+                            <input class="invisible" type="radio" name="" id="2">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="3">4 Go</label>
+                            <input class="invisible" type="radio" name="" id="3">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="4">6 Go</label>
+                            <input class="invisible" type="radio" name="" id="4">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="5">8 Go</label>
+                            <input class="invisible" type="radio" name="" id="5">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="6">12 Go</label>
+                            <input class="invisible" type="radio" name="" id="6">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="7">16 Go</label>
+                            <input class="invisible" type="radio" name="" id="7">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="8">18 Go</label>
+                            <input class="invisible" type="radio" name="" id="8">
+                            <label class="border h-auto w-auto p-2 border-primary rounded" for="9">24 Go</label>
+                            <input class="invisible" type="radio" name="" id="9">
+                        </div>
+                        <label for="">Capacité de stockage</label>
+                        <div class="d-flex flex-row flex-wrap gap-3">
+                            <span class="border btn span-hover border-primary text-center p-2 rounded">16 Go</span>
+                            <span class="border btn border-primary text-center p-2 rounded">32 Go</span>
+                            <span class="border btn border-primary text-center p-2 rounded">64 Go</span>
+                            <span class="border btn border-primary text-center p-2 rounded">128 Go</span>
+                            <span class="border btn border-primary text-center p-2 rounded">256 Go</span>
+                            <span class="border btn border-primary text-center p-2 rounded">512 Go</span>
+                            <span class="border btn border-primary text-center p-2 rounded">1 To</span>
+                        </div>
+
+
+                        <label for="">Pondération</label>
+                        <div class="d-flex flex-row flex-wrap gap-3">
+                            <span class="border btn span-hover border-primary text-center p-2 rounded">rayé des deux
+                                côtés </span>
+                            <span class="border btn border-primary text-center p-2 rounded">rayé à l'avant</span>
+                            <span class="border btn border-primary text-center p-2 rounded">rayé à l'arrière</span>
+                            <span class="border btn border-primary text-center p-2 rounded">état correct</span>
+                            <span class="border btn border-primary text-center p-2 rounded">parfait état</span>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <label for="">Commentaire</label>
+                            <div class="d-flex align-items-end">
+                                <textarea class="border border-primary w-75 rounded" name="" id="" cols="30"
+                                    rows="5"></textarea>
+                                {% include "components/svg/icon_edit.svg.twig" %}
+                            </div>
+                        </div>
+                        <input class="btn-secondary" type="file" name="" id="">
+                        <button
+                            class=" btn btn-secondary me-auto d-flex justify-content-center align-items-end text-light">
+                            valider
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <button class=" btn btn-outline-secondary text-secondary">retour</button>
+        </div>
+    </div>
+</main>
+{% endblock %}
