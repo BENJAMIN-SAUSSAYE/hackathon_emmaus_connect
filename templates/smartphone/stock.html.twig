@@ -1,0 +1,71 @@
+{% extends 'visitor.html.twig' %}
+
+{% block title %}
+	Mon stock -
+	{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('stock') }}
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="container-fluid container-md mb-5">
+			<div class="row">
+				<div class="col d-flex justify-content-end mt-3 mt-md-5 pt-4 gap-2">
+					<a href="{{ path('smartphone_identify') }}" role="button" class="custom-btn bg-secondary text-light my-2">
+						Ajouter
+					</a>
+				</div>
+			</div>
+			<div class="table-responsive rounded custom-shadow">
+				<table class="table table-striped table-hover table-bordered border-secondary m-0">
+					<thead class="sticky-top">
+						<tr class="py-4">
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">DATE DÉPOT</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">MARQUE</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">MODÈLE</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">DÉPOT</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">RAM</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">CAPACITÉ</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">PONDÉRATION</th>
+							{# <th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">CATÉGORIE</th> #}
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">CO2</th>
+							<th class="w-auto th-lg py-3 px-4 bg-secondary" scope="col">PRIX</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+						{% if smartphones|length > 0 %}
+							{% for smartphone in smartphones %}
+								<tr>
+									<td class="px-4 align-middle align-center text-center">{{ smartphone.estimateAt ? smartphone.estimateAt|date('d/m/Y H:i') : '' }}</td>
+									<td class="px-4 align-middle">{{ smartphone.model.brand.name }}</td>
+									<td class="px-4 align-middle">{{ smartphone.model.name }}</td>
+									<td class="px-4 align-middle">{{ smartphone.operator.centerName }}</td>
+									<td class="px-4 align-middle">{{ smartphone.ramNumber }}</td>
+									<td class="px-4 align-middle">{{ smartphone.stockageNumber }}</td>
+									<td class="px-4 align-middle">
+										{% if smartphone.ponderation > 0 %}
+											<span class="badge p-2 m-2 rounded-pill text-bg-success">{{ smartphone.ponderation }}</span>
+										{% else %}
+											<span class="badge p-2 m-2 rounded-pill text-bg-danger">{{ smartphone.ponderation }}</span>
+										{% endif %}
+									</td>
+									{# <td class="px-4 align-middle">{{ smartphone.getCategorie }}</td> #}
+									<td class="px-4 align-middle">{{ smartphone.rateCo2 }}</td>
+									<td class="px-4 align-middle">{{ smartphone.calculatePrice  }}</td>
+								</tr>
+							{% endfor %}
+						{% else %}
+							<tr>
+								<td colspan="10">Aucun enregistrement trouvé...</td>
+							</tr>
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</main>
+{% endblock %}

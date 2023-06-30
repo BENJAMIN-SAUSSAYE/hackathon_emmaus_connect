@@ -2,15 +2,23 @@
 
 namespace App\Controller;
 
-use App\Entity\IdentifySearch;
+use App\Entity\Smartphone;
+use App\Service\PdfService;
+use App\Entity\User;
 use App\Form\IdentifyType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\IdentifySearch;
+use App\Repository\ModelRepository;
+use App\Repository\SmartphoneRepository;
+use App\Service\CalculatePriceService;
+
+use Symfony\Bundle\SecurityBundle\Security;
+use function PHPUnit\Framework\isEmpty;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-
-use function PHPUnit\Framework\isEmpty;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/', name: 'smartphone_')]
 class SmartphoneController extends AbstractController
@@ -67,17 +75,30 @@ class SmartphoneController extends AbstractController
 	}
 
 	#[IsGranted('ROLE_USER')]
-	#[Route('/{id}', name: 'details')]
-	public function showDetails($id): Response
+	#[Route('/smartphone/resultat/{id}', name: 'smartphone_result')]
+	public function showResult(Smartphone $smartphone, ModelRepository $modelRepository, CalculatePriceService $calculatePriceService): Response
 	{
-		// Récupérer les détails du téléphone portable avec l'ID donné
-
-		// ...
-
+		$categoryLabel = $calculatePriceService->getPriceCategory($smartphone);
 		$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
-		return $this->render('smartphone/details.html.twig', [
-			//'phoneDetails' => $phoneDetails,
+
+		return $this->render('smartphone/result.html.twig', [
+			'categoryLabel' => $categoryLabel,
+			'smartphone' => $smartphone,
 			'congratulationsPhrase' => $congratulationsPhrase,
+		]);
+	}
+
+	#[IsGranted('ROLE_USER')]
+	#[Route('/smartphone/stock/', name: 'stock')]
+	public function showStock(SmartphoneRepository $smartphoneRepository, Security $security): Response
+	{
+		/** @var User $user */
+		$user = $security->getUser();
+		$smartphones = $smartphoneRepository->findBy(['operator' => $user], ['estimateAt' => 'ASC']);
+		//$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
+		return $this->render('smartphone/stock.html.twig', [
+			'smartphones' => $smartphones,
+			//'congratulationsPhrase' => $congratulationsPhrase,
 		]);
 	}
 
@@ -94,5 +115,20 @@ class SmartphoneController extends AbstractController
 		$randomIndex = array_rand(self::CONGRATULATIONS_PHRASES);
 		$congratulationsPhrase = self::CONGRATULATIONS_PHRASES[$randomIndex];
 		return $congratulationsPhrase;
+	}
+
+	#[Route('/pdf/{id}', name: 'pdf')]
+	public function generatePdf(Smartphone $smartphone, PdfService $pdf)
+	{
+		//$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
+
+		$html =  $this->renderView('smartphone/pdf.html.twig', [
+			'categoryLabel' => '',
+			'smartphone' => $smartphone,
+			'congratulationsPhrase' => '',
+		]);
+
+		//$html = $this->render('smartphone/pdf.html.twig', ['smartphone' => $smartphone]);
+		$pdf->downloadPdfFile($html);
 	}
 }
