@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SmartphoneRepository;
+use App\Service\CalculateCarbonService;
+use App\Service\CalculatePriceService;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 

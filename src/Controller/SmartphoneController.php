@@ -4,13 +4,21 @@ namespace App\Controller;
 
 use App\Entity\Smartphone;
 use App\Service\PdfService;
-use App\Entity\IdentifySearch;
+use App\Entity\User;
 use App\Form\IdentifyType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\IdentifySearch;
+use App\Repository\ModelRepository;
+use App\Repository\SmartphoneRepository;
+use App\Service\CalculatePriceService;
+
+use Symfony\Bundle\SecurityBundle\Security;
+use function PHPUnit\Framework\isEmpty;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/', name: 'smartphone_')]
 class SmartphoneController extends AbstractController
@@ -51,7 +59,14 @@ class SmartphoneController extends AbstractController
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
-			return $this->redirectToRoute('app_caracteristic', ['id_brand' => $identifySearch->getBrand()->getId()], Response::HTTP_SEE_OTHER);
+			$params = [];
+			if (!empty($identifySearch->getModel())) {
+				$params += ['id_model' => $identifySearch->getModel()->getId()];
+			}
+			if (!empty($identifySearch->getImeiNumber()) && is_numeric($identifySearch->getImeiNumber())) {
+				$params = ['imei' => $identifySearch->getImeiNumber()];
+			}
+			return $this->redirectToRoute('app_caracteristique', $params, Response::HTTP_SEE_OTHER);
 		}
 		return $this->render('smartphone/identify.html.twig', [
 			'form' => $form,
@@ -59,20 +74,33 @@ class SmartphoneController extends AbstractController
 		]);
 	}
 
-	// #[IsGranted('ROLE_USER')]
-	// #[Route('/{id}', name: 'details')]
-	// public function showDetails($id): Response
-	// {
-	// 	// Récupérer les détails du téléphone portable avec l'ID donné
+	#[IsGranted('ROLE_USER')]
+	#[Route('/smartphone/resultat/{id}', name: 'smartphone_result')]
+	public function showResult(Smartphone $smartphone, ModelRepository $modelRepository, CalculatePriceService $calculatePriceService): Response
+	{
+		$categoryLabel = $calculatePriceService->getPriceCategory($smartphone);
+		$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
 
-	// 	// ...
+		return $this->render('smartphone/result.html.twig', [
+			'categoryLabel' => $categoryLabel,
+			'smartphone' => $smartphone,
+			'congratulationsPhrase' => $congratulationsPhrase,
+		]);
+	}
 
-	// 	$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
-	// 	return $this->render('smartphone/details.html.twig', [
-	// 		//'phoneDetails' => $phoneDetails,
-	// 		'congratulationsPhrase' => $congratulationsPhrase,
-	// 	]);
-	// }
+	#[IsGranted('ROLE_USER')]
+	#[Route('/smartphone/stock/', name: 'stock')]
+	public function showStock(SmartphoneRepository $smartphoneRepository, Security $security): Response
+	{
+		/** @var User $user */
+		$user = $security->getUser();
+		$smartphones = $smartphoneRepository->findBy(['operator' => $user], ['estimateAt' => 'ASC']);
+		//$congratulationsPhrase = $this->getRandomCongratulationsPhrase();
+		return $this->render('smartphone/stock.html.twig', [
+			'smartphones' => $smartphones,
+			//'congratulationsPhrase' => $congratulationsPhrase,
+		]);
+	}
 
 	private function getRandomMotivationPhrase(): string
 	{
