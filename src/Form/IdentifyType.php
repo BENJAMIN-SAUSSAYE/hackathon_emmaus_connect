@@ -47,7 +47,7 @@ class IdentifyType extends AbstractType
 					'required' => false,
 					'attr' => [
 						'placeholder' => 'N° de Imei...',
-						'class' => 'form-control fs-4 bg-light',
+						'class' => 'form-control fs-4 bg-light border-secondary border-3',
 					],
 				]
 			);
